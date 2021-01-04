@@ -1,37 +1,23 @@
-## Welcome to GitHub Pages
+## Leetcode刷题记录
 
-You can use the [editor on GitHub](https://github.com/Yangyangl7/leetcode-review/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+#### 2021/01/04
+[#86. 分隔链表](https://leetcode-cn.com/problems/partition-list/)
+创建两个节点后，对链表进行遍历，一个节点用来存储小于给定值节点从而形成小值串成的链表，另一个节点用来存储大于或等于给定值节点从而形成大值串成的链表，最后将小节点末尾指向大节点开头即可。**重点在于在初始时给两个节点创建一个虚节点**，以避免两个节点的链表最后有多余节点而又无法消去的情况
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+[#146 LRU 缓存机制](https://leetcode-cn.com/problems/lru-cache/)
+使用**Hash表加链表的结构，使用链表记录使用频率的情况**，最近使用在尾端，最久未使用在前端。每个Hash表中以key为键保存链接中对应每个节点对象，节点对应拥有同样的key和对应的value，同时保存向上和下个节点。
 
-### Markdown
+[ #435 无重叠区间](https://leetcode-cn.com/problems/non-overlapping-intervals/)
+贪心算法，对二维数组进行排序，**排序依据是int[]，即行**，用每行第二个元素进行排序后遍历，只要存在一个坐标有交叉的地方便对删除区间进行加1。
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+[#84 柱状图中最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram/)
+采用的**数据结构为单调递增的栈**，同时需要**两个数组用来存储每个节点对应的起始和结束索引值**，首先对柱状图高度数组从左往右进行遍历，在**栈中存储的是索引号**，在当前索引的值如果大于或等于栈顶索引号对应值时，自然将新的索引入栈，如果小于的话证明当前栈顶元素的值为矩形的起点到了（左边最近的索引号为起点），此出栈操作一直进行直到找到栈顶元素对应索引值小于当前索引值时为止，整个遍历用来填充存储起始节点的数组。相似的再从右往左遍历一遍柱状图高度数组，填满用来记录每个节点形成矩阵的终点数组。最后遍历这两个数组（大小相同一个for即可），计算每个节点形成的矩阵并返回最大即可。
 
-```markdown
-Syntax highlighted code block
+[#85 最大矩形](https://leetcode-cn.com/problems/maximal-rectangle/)
+**遍历一遍整个数组，将每个位置的值进行累加（加上前面连续的n个1），从而将矩阵转变为题目84**。这样只需要再84题的最外部加一个for循环几个，该循环按照列的维度进行遍历，相对于84题的整个流程针对每一列循环一次，算出最大面积并返回。
 
-# Header 1
-## Header 2
-### Header 3
+[#509 斐波那契数](https://leetcode-cn.com/problems/fibonacci-number/submissions/)
+直接递归，时间复杂度太高。采用for循环的方法复杂度O(n)，三个数分别存f(0)，f(1)和结果，之后将f(1)赋值到f(0)，结果赋值到f(1)即可再次进行新一轮相加，一直到遍历的i加到等于n。
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Yangyangl7/leetcode-review/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
